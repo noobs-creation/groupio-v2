@@ -1,12 +1,25 @@
 const express  = require("express");
 const app = express();
-const ejs = require("ejs");
+// const ejs = require("ejs");
 
+const server = require('http').Server(app)
+
+const io = require('socket.io')(server)
+const { ExpressPeerServer } = require('peer')
+const peerServer = ExpressPeerServer(server, {
+  debug: true
+})
+
+app.use('/peerjs', peerServer)
+
+//js and css files
+app.use(express.static('public'))
 const bodyParser = require("body-parser");
-const http = require("http");
-const port = 3000;
+// const http = require("http");
+// const port = 3000;
 
 app.use(bodyParser.urlencoded({extended: true}));
+
 app.set("view engine", "ejs");
 
 
@@ -29,7 +42,9 @@ app.post('/submitForm', function(req, res){
     res.redirect('/'+link);
 });
 
-app.listen(port, function (){
-  console.log("Server running");
-});
+// app.listen(port, function (){
+//   console.log("Server running");
+// });
 
+//starts server on port 3300
+server.listen(process.env.PORT||3300)
