@@ -8,8 +8,13 @@
 </head>
 <body>
     <h2>Welcome to our video chat app</h2>
-    <form action='/submitForm' method='post'>
+    <form action='/existingRoom' method='post'>
         <input type='text' placeholder="enter custom link" name='customLink' />
+        <input type='submit'/>
+    </form>
+
+    <p>Video chat new room</p>
+    <form action='/newRoom' method='post'>
         <input type='submit'/>
     </form>
 </body>

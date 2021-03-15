@@ -14,6 +14,8 @@ app.use(express.static('public'));
 
 app.use('/peerjs', peerServer);
 
+const { v4: uuidV4 } = require('uuid')
+
 const bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({extended: true}));
 
@@ -45,15 +47,20 @@ app.get('/', function(req, res){
   res.render('landing');
 });
 
+app.post('/existingRoom', function(req, res){
+  var link = req.body.customLink;
+  res.redirect('/'+link);
+});
+
 app.get('/:room', function(req, res){
  // console.log(links)
  var roomId = req.params.room;
  res.render('room', {roomId: roomId})
 });
 
-app.post('/submitForm', function(req, res){
+app.post('/existingRoom', function(req, res){
    var link = req.body.customLink;
-   res.redirect('/'+link);
+   res.redirect(`/${uuidV4()}`);
 });
 
 
