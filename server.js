@@ -86,6 +86,13 @@ io.on('connection', socket => {
     //another event and passing userid
     socket.to(roomId).broadcast.emit('user-connected', userId)
     //this will get called when someone leaves or disconnects
+
+    // messages
+    socket.on('message', (message) => {
+      //send message to the same room
+      io.to(roomId).emit('createMessage', message)
+    }); 
+
     socket.on('disconnect', () => {
       socket.to(roomId).broadcast.emit('user-disconnected', userId)
     })
