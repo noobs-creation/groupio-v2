@@ -58,7 +58,7 @@ app.get('/:room', function(req, res){
  res.render('room', {roomId: roomId})
 });
 
-app.post('/existingRoom', function(req, res){
+app.post('/newRoom', function(req, res){
    var link = req.body.customLink;
    res.redirect(`/${uuidV4()}`);
 });
