@@ -1,3 +1,13 @@
+const express  = require("express");
+const app = express();
+const ejs = require("ejs");
+
+const bodyParser = require("body-parser");
+
+const port = process.env.PORT;
+
+app.use(bodyParser.urlencoded({extended: true}));
+app.set("view engine", "ejs");
 
 const server = require('http').Server(app)
 const io = require('socket.io')(server)
@@ -15,17 +25,6 @@ app.use('/peerjs', peerServer);
 app.use(express.static('public'))
 
 
-
-const express  = require("express");
-const app = express();
-const ejs = require("ejs");
-
-const bodyParser = require("body-parser");
-
-const port = process.env.PORT;
-
-app.use(bodyParser.urlencoded({extended: true}));
-app.set("view engine", "ejs");
 
 
 
