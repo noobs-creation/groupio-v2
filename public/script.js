@@ -117,6 +117,10 @@ const muteUnmute = () => {
       myVideoStream.getVideoTracks()[0].enabled = true;
     }
   }
+
+  const leaveMeeting = () => {
+    window.location.href = "/"
+  }
   
   const setMuteButton = () => {
     const html = `
