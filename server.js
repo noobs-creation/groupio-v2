@@ -49,7 +49,13 @@ app.get('/', function(req, res){
 
 app.post('/existingRoom', function(req, res){
   var link = req.body.customLink;
-  res.redirect('/'+link);
+  var flag = link.startsWith("https://group-io.herokuapp.com/");
+  if(flag){
+    var newLink = link.replace("https://group-io.herokuapp.com/", "");
+  }else{
+    var newLink = link;
+  }
+  res.redirect('/'+newLink);
 });
 
 app.get('/:room', function(req, res){
@@ -59,7 +65,6 @@ app.get('/:room', function(req, res){
 });
 
 app.post('/newRoom', function(req, res){
-   var link = req.body.customLink;
    res.redirect(`/${uuidV4()}`);
 });
 
