@@ -55,7 +55,7 @@ const ejs = require("ejs");
 
 const bodyParser = require("body-parser");
 const http = require("http");
-const port = process.env.PORT || 3300;
+// const port = process.env.PORT || 3300;
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
@@ -81,7 +81,7 @@ app.post('/submitForm', function(req, res){
     res.redirect('/'+link);
 });
 
-app.listen(port, function (){
+app.listen((process.env.PORT || 3300), function (){
   console.log("Server running");
 });
 
