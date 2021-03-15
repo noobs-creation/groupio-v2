@@ -1,32 +1,24 @@
-const express  = require("express");
-const app = express();
-const ejs = require("ejs");
-
-const bodyParser = require("body-parser");
-
-const port = process.env.PORT;
-
-app.use(bodyParser.urlencoded({extended: true}));
-app.set("view engine", "ejs");
-
+const express = require('express')
+const app = express()
+// const cors = require('cors')
+// app.use(cors())
 const server = require('http').Server(app)
 const io = require('socket.io')(server)
-
 const { ExpressPeerServer } = require('peer');
 const peerServer = ExpressPeerServer(server, {
   debug: true
 });
-
-// const { v4: uuidV4 } = require('uuid')
+const { v4: uuidV4 } = require('uuid')
 
 app.use('/peerjs', peerServer);
 
-// app.set('view engine', 'ejs')
+app.set('view engine', 'ejs')
 app.use(express.static('public'))
 
 
+const bodyParser = require("body-parser");
 
-
+app.use(bodyParser.urlencoded({extended: true}));
 
 const links = [];
 
