@@ -4,7 +4,7 @@ const ejs = require("ejs");
 
 const bodyParser = require("body-parser");
 const http = require("http");
-const port = 3000;
+const port = process.env.PORT;
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
