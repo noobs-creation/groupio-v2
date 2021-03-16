@@ -23,16 +23,16 @@
 }
 
 .main__controls {
-    background-color: #1C1E20;
+    background-color: #0066ff;
 }
 
 .main__right {
-    background-color: #242324;
-    border-left: 1px solid #3D3D42;
+    background-color: #0047b3;
+    border-left: 1px solid #66a3ff;
 }
 
 .main__controls {
-    color: #D2D2D2;
+    color: #b3d1ff;
     display: flex;
     justify-content: space-between;
     padding: 5px;
@@ -53,7 +53,7 @@
 }
 
 .main__controls__button:hover {
-    background-color: #343434;
+    background-color: #66a3ff;
     border-radius: 5px;
 }
 
@@ -68,7 +68,7 @@
 
 .main__header {
     padding-top: 5px;
-    color: #F5F5F5;
+    color: #66a3ff;
     text-align: center;
 }
 
