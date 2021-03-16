@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-
+const path = require('path')
 const server = require('http').Server(app)
 const io = require('socket.io')(server)
 
@@ -10,7 +10,7 @@ const peerServer = ExpressPeerServer(server, {
 });
 
 app.set('view engine', 'ejs');
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/peerjs', peerServer);
 
@@ -21,30 +21,9 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 const links = [];
 
-// for dynamic url we are using uuid
-// const { v4: uuidV4 } = require('uuid')
-
-// //setting express server
-// //rendering views 
-// app.set('view engine', 'ejs')
-// //all js and css will be stored in public
-// app.use(express.static('public'))
-
-// //going to homepage creates a brand new room
-// app.get('/', (req, res) => {
-//   res.redirect(`/${uuidV4()}`)
-// })
-
-// // :room dynamic var
-// //req.params.room gets value from url
-// app.get('/:room', (req, res) => {
-//   res.render('room', { roomId: req.params.room })
-// })
-
-
-
 app.get('/', function(req, res){
-  res.render('landing');
+  // res.render('landing');
+  res.sendFile(path.join(__dirname, 'views/index.html'))
 });
 
 app.post('/existingRoom', function(req, res){
